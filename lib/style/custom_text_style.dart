@@ -2,215 +2,215 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextStyle {
-  final xxLargeBlackBoldText = TextStyle(
+  final  TextStyle xxLargeBlackBoldText = TextStyle(
     fontSize: 26.sp,
     color: Colors.black,
     fontWeight: FontWeight.bold
 
   );
-    final xxLargeBlackText = TextStyle(
+    final  TextStyle xxLargeBlackText = TextStyle(
     fontSize: 26.sp,
     color: Colors.black,
     
   );
-      final xxLargeWhiteBoldText = TextStyle(
+      final  TextStyle xxLargeWhiteBoldText = TextStyle(
     fontSize: 26.sp,
     color: Colors.white,
     fontWeight: FontWeight.bold
     
   );
-        final xxLargeWhiteText = TextStyle(
+        final  TextStyle xxLargeWhiteText = TextStyle(
     fontSize: 26.sp,
     color: Colors.white,
    
     
   );
 
-    final xLargeBlackBoldText = TextStyle(
+    final  TextStyle xLargeBlackBoldText = TextStyle(
     fontSize: 22.sp,
     color: Colors.black,
     fontWeight: FontWeight.bold
 
   );
-    final xLargeBlackText = TextStyle(
+    final  TextStyle xLargeBlackText = TextStyle(
     fontSize: 22.sp,
     color: Colors.black,
     
   );
-      final xLargeWhiteBoldText = TextStyle(
+      final  TextStyle xLargeWhiteBoldText = TextStyle(
     fontSize: 22.sp,
     color: Colors.white,
     fontWeight: FontWeight.bold
     
   );
-        final xLargeWhiteText = TextStyle(
+        final  TextStyle xLargeWhiteText = TextStyle(
     fontSize: 22.sp,
     color: Colors.white,
    
     
   );
 
-    final largeBlackBoldText = TextStyle(
+    final  TextStyle largeBlackBoldText = TextStyle(
     fontSize: 20.sp,
     color: Colors.black,
     fontWeight: FontWeight.bold
 
   );
-    final largeBlackText = TextStyle(
+    final  TextStyle largeBlackText = TextStyle(
     fontSize: 20.sp,
     color: Colors.black,
     
   );
-      final largeWhiteBoldText = TextStyle(
+      final  TextStyle largeWhiteBoldText = TextStyle(
     fontSize: 20.sp,
     color: Colors.white,
     fontWeight: FontWeight.bold
     
   );
-        final largeWhiteText = TextStyle(
+        final  TextStyle largeWhiteText = TextStyle(
     fontSize: 20.sp,
     color: Colors.white,
    
     
   );
 
-    final mediumBlackBoldText = TextStyle(
+    final  TextStyle mediumBlackBoldText = TextStyle(
     fontSize: 18.sp,
     color: Colors.black,
     fontWeight: FontWeight.bold
 
   );
-    final mediumBlackText = TextStyle(
+    final  TextStyle mediumBlackText = TextStyle(
     fontSize: 18.sp,
     color: Colors.black,
     
   );
-      final mediumWhiteBoldText = TextStyle(
+      final  TextStyle mediumWhiteBoldText = TextStyle(
     fontSize: 18.sp,
     color: Colors.white,
     fontWeight: FontWeight.bold
     
   );
-        final mediumWhiteText = TextStyle(
+        final  TextStyle mediumWhiteText = TextStyle(
     fontSize: 18.sp,
     color: Colors.white,
    
     
   );
 
-    final smallBlackBoldText = TextStyle(
+    final  TextStyle smallBlackBoldText = TextStyle(
     fontSize: 16.sp,
     color: Colors.black,
     fontWeight: FontWeight.bold
 
   );
-    final smallBlackText = TextStyle(
+    final  TextStyle smallBlackText = TextStyle(
     fontSize: 16.sp,
     color: Colors.black,
     
   );
-      final smallWhiteBoldText = TextStyle(
+      final  TextStyle smallWhiteBoldText = TextStyle(
     fontSize: 16.sp,
     color: Colors.white,
     fontWeight: FontWeight.bold
     
   );
-        final smallWhiteText = TextStyle(
+        final  TextStyle smallWhiteText = TextStyle(
     fontSize: 16.sp,
     color: Colors.white,
    
     
   );
-    final xsmallBlackBoldText = TextStyle(
+    final  TextStyle xsmallBlackBoldText = TextStyle(
     fontSize: 14.sp,
     color: Colors.black,
     fontWeight: FontWeight.bold
 
   );
-    final xsmallBlackText = TextStyle(
+    final  TextStyle xsmallBlackText = TextStyle(
     fontSize: 14.sp,
     color: Colors.black,
     
   );
-      final xsmallWhiteBoldText = TextStyle(
+      final  TextStyle xsmallWhiteBoldText = TextStyle(
     fontSize: 14.sp,
     color: Colors.white,
     fontWeight: FontWeight.bold
     
   );
-        final xsmallWhiteText = TextStyle(
+        final  TextStyle xsmallWhiteText = TextStyle(
     fontSize: 14.sp,
     color: Colors.white,
    
     
   );
 
-    final xxsmallBlackBoldText = TextStyle(
+    final  TextStyle xxsmallBlackBoldText = TextStyle(
     fontSize: 12.sp,
     color: Colors.black,
     fontWeight: FontWeight.bold
 
   );
-    final xxsmallBlackText = TextStyle(
+    final  TextStyle xxsmallBlackText = TextStyle(
     fontSize: 12.sp,
     color: Colors.black,
     
   );
-      final xxsmallWhiteBoldText = TextStyle(
+      final  TextStyle xxsmallWhiteBoldText = TextStyle(
     fontSize: 12.sp,
     color: Colors.white,
     fontWeight: FontWeight.bold
     
   );
-        final xxsmallWhiteText = TextStyle(
+        final  TextStyle xxsmallWhiteText = TextStyle(
     fontSize: 12.sp,
-    color: Colors.white,
-   
-    
-  );
-
-    final verysmallBlackBoldText = TextStyle(
-    fontSize: 10.sp,
-    color: Colors.black,
-    fontWeight: FontWeight.bold
-
-  );
-    final verysmallBlackText = TextStyle(
-    fontSize: 10.sp,
-    color: Colors.black,
-    
-  );
-      final verysmallWhiteBoldText = TextStyle(
-    fontSize: 10.sp,
-    color: Colors.white,
-    fontWeight: FontWeight.bold
-    
-  );
-        final verysmallWhiteText = TextStyle(
-    fontSize: 10.sp,
     color: Colors.white,
    
     
   );
 
-    final extremsmallBlackBoldText = TextStyle(
+    final  TextStyle verysmallBlackBoldText = TextStyle(
+    fontSize: 10.sp,
+    color: Colors.black,
+    fontWeight: FontWeight.bold
+
+  );
+    final  TextStyle verysmallBlackText = TextStyle(
+    fontSize: 10.sp,
+    color: Colors.black,
+    
+  );
+      final  TextStyle verysmallWhiteBoldText = TextStyle(
+    fontSize: 10.sp,
+    color: Colors.white,
+    fontWeight: FontWeight.bold
+    
+  );
+        final  TextStyle verysmallWhiteText = TextStyle(
+    fontSize: 10.sp,
+    color: Colors.white,
+   
+    
+  );
+
+    final  TextStyle extremsmallBlackBoldText = TextStyle(
     fontSize: 8.sp,
     color: Colors.black,
     fontWeight: FontWeight.bold
 
   );
-    final extremsmallBlackText = TextStyle(
+    final  TextStyle extremsmallBlackText = TextStyle(
     fontSize: 8.sp,
     color: Colors.black,
     
   );
-      final extremsmallWhiteBoldText = TextStyle(
+      final  TextStyle extremsmallWhiteBoldText = TextStyle(
     fontSize: 8.sp,
     color: Colors.white,
     fontWeight: FontWeight.bold
     
   );
-        final extremesmallWhiteText = TextStyle(
+        final  TextStyle extremesmallWhiteText = TextStyle(
     fontSize: 8.sp,
     color: Colors.white,
    
