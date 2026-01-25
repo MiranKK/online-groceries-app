@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_groceries_app_ui/style/custom_text_style.dart';
+import 'package:online_groceries_app_ui/widgets/custom_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -41,25 +42,9 @@ class OnboardingScreen extends StatelessWidget {
 
             Align(
               alignment: Alignment(0, 0.7),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(200, 45),
-                  backgroundColor: Color(0xff53B175),
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                onPressed: () {},
-                child: Text(
-                  textAlign: TextAlign.center,
-                  "Get Started",
-                  style: CustomTextStyle().xxLargeWhiteBoldText.copyWith(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w100,
-                  ),
-                ),
-              ),
+              child: CustomButton(onpressed: (){
+                Navigator.pushReplacementNamed(context, "/login");
+              }, text: "Get Started")
             ),
           ],
         ),
