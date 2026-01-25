@@ -26,6 +26,41 @@ class OnboardingScreen extends StatelessWidget {
                 ),
               ),
             ),
+
+            Align(
+              alignment: Alignment(0, 0.45),
+              child: Text(
+                textAlign: TextAlign.center,
+                "Ger your groceries in as fast as one hour",
+                style: CustomTextStyle().xxLargeWhiteBoldText.copyWith(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w100,
+                ),
+              ),
+            ),
+
+            Align(
+              alignment: Alignment(0, 0.7),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(200, 45),
+                  backgroundColor: Color(0xff53B175),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {},
+                child: Text(
+                  textAlign: TextAlign.center,
+                  "Get Started",
+                  style: CustomTextStyle().xxLargeWhiteBoldText.copyWith(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w100,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
