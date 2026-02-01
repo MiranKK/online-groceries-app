@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_groceries_app_ui/provider/user_provider.dart';
 import 'package:online_groceries_app_ui/style/custom_text_style.dart';
 import 'package:online_groceries_app_ui/widgets/custom_button.dart';
+import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -17,6 +19,7 @@ class _SignupScreenState extends State<SignupScreen> {
   bool isvisable = true;
   @override
   Widget build(BuildContext context) {
+    final userprovider = Provider.of<UserProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -74,11 +77,14 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
 
               SizedBox(height: 35.h),
+             
               TextField(
+
                 controller: password,
                 obscureText: isvisable,
                 style: CustomTextStyle().xxsmallBlackBoldText,
                 decoration: InputDecoration(
+                
                   hintText: "Enter password",
                   hintStyle: CustomTextStyle().xxsmallBlackText.copyWith(
                     color: Colors.grey,
@@ -107,7 +113,30 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               SizedBox(height: 25.h),
               Center(
-                child: CustomButton(onpressed: () {}, text: "Sign Up"),
+                child: userprovider.isloading
+                    ? CircularProgressIndicator()
+                    : CustomButton(
+                        onpressed: () async {
+                          await userprovider.signupUser(
+                            email.text.trim(),
+                            password.text.trim(),
+                          );
+                          if (userprovider.errormessage == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Sign up successfully')),
+                            );
+                               Navigator.pushNamed(context, "/home");
+                          } else {
+                          
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(userprovider.errormessage!),
+                              ),
+                            );
+                          }
+                        },
+                        text: "Sign Up",
+                      ),
               ),
               SizedBox(height: 20.h),
               Row(

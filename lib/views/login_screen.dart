@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_groceries_app_ui/provider/user_provider.dart';
 import 'package:online_groceries_app_ui/style/custom_text_style.dart';
 import 'package:online_groceries_app_ui/widgets/custom_button.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isvisable = true;
   @override
   Widget build(BuildContext context) {
+    final userprovider = Provider.of<UserProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -97,7 +100,28 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 25.h),
               Center(
-                child: CustomButton(onpressed: () {}, text: "Log In"),
+                child: userprovider.isloading
+                    ? CircularProgressIndicator()
+                    : CustomButton(
+                        onpressed: () async {
+                          await userprovider.loginUser(
+                            email.text.trim(),
+                            password.text.trim(),
+                          );
+
+                          if (userprovider.errormessage == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Login successfully')),
+                            );
+                            Navigator.pushReplacementNamed(context, "/home");
+                          }else{
+                             ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(userprovider.errormessage!)),
+                            );
+                          }
+                        },
+                        text: "Log In",
+                      ),
               ),
               SizedBox(height: 20.h),
               Row(
