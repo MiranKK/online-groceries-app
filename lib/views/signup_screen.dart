@@ -125,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Sign up successfully')),
                             );
-                               Navigator.pushNamed(context, "/home");
+                               Navigator.pushNamed(context, "/bottomNavigation");
                           } else {
                           
                             ScaffoldMessenger.of(context).showSnackBar(

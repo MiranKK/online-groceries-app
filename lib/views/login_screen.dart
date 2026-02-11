@@ -92,9 +92,14 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    "Forgot Password?",
-                    style: CustomTextStyle().xxsmallBlackText,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/forgotPassword");
+                    },
+                    child: Text(
+                      "Forgot Password?",
+                      style: CustomTextStyle().xxsmallBlackText,
+                    ),
                   ),
                 ],
               ),
@@ -113,10 +118,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Login successfully')),
                             );
-                            Navigator.pushReplacementNamed(context, "/home");
-                          }else{
-                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(userprovider.errormessage!)),
+                            Navigator.pushReplacementNamed(context, "/bottomNavigation");
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(userprovider.errormessage!),
+                              ),
                             );
                           }
                         },

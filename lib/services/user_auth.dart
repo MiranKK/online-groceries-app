@@ -30,4 +30,27 @@ class UserAuth {
       throw "Something went wrong $e";
     }
   }
+
+  Future<void> resetPassword(String email) async {
+    try {
+      final result = await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw e.message ?? "Send reset password failed";
+    } catch (e) {
+      throw "Something went wrong";
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      await _auth.signOut();
+      
+    } on FirebaseAuthException catch (e) {
+      throw e.message ?? "Sign out failed";
+      
+    } catch (e) {
+      throw "Something went wrong";
+      
+    }
+  }
 }
