@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_groceries_app_ui/data/card_items.dart';
 import 'package:online_groceries_app_ui/style/custom_text_style.dart';
+import 'package:online_groceries_app_ui/widgets/custom_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -84,60 +86,49 @@ class HomeScreen extends StatelessWidget {
               ),
 
               SliverGrid.builder(
-                itemCount: 4,
+                itemCount: exclusiveOfferList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 0.9,
+                  childAspectRatio: 0.75,
                   crossAxisCount: 2,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
                 ),
                 itemBuilder: (context, index) {
-                  return Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(10.r),
-                      child: Column(
-                        crossAxisAlignment: .start,
-                        children: [
-                          Center(
-                            child: Image.asset(
-                              "assets/images/item-1.png",
-                              width: 100.w,
-                            ),
-                          ),
-                          SizedBox(height: 15.h),
-                          Text(
-                            "Red Apple",
-                            style: CustomTextStyle().xxsmallBlackBoldText,
-                          ),
-                          SizedBox(height: 10.h),
-                          Row(
-                            mainAxisAlignment: .spaceBetween,
-                            children: [
-                              Text(
-                                "\$4.99",
-                                style: CustomTextStyle().xxsmallBlackBoldText,
-                              ),
-                              IconButton(
-                                style: IconButton.styleFrom(
-                                  backgroundColor: Color(0xff53B175),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.r),
-                                  ),
-                                ),
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                  size: 20.w,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                  return CustomCard(
+                    image: exclusiveOfferList[index].image,
+                    title: exclusiveOfferList[index].title,
+                    price: "\$${exclusiveOfferList[index].price}",
                   );
                 },
+              ),
+              SliverToBoxAdapter(child: SizedBox(height: 20.h)),
+              SliverToBoxAdapter(
+                child: Text(
+                  "Most Popular",
+                  style: CustomTextStyle().smallBlackBoldText,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 170.w,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                        width: 120.w,
+                        child: CustomCard(
+                          image: mostPopularList[index].image,
+                          title: mostPopularList[index].title,
+                          price: "\$${mostPopularList[index].price}",
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) => SizedBox(width: 10.w),
+                    itemCount: mostPopularList.length,
+                  ),
+                ),
               ),
             ],
           ),
