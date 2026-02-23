@@ -5,6 +5,10 @@ class UserProvider extends ChangeNotifier {
   final UserAuth _userAuth = UserAuth();
   String? errormessage;
   bool isloading = false;
+  final TextEditingController name = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  bool isvisable = true;
 
   Future<void> signupUser(String email, String password) async {
     errormessage = null;
@@ -62,5 +66,41 @@ class UserProvider extends ChangeNotifier {
       isloading = false;
       notifyListeners();
     }
+  }
+
+  String? nameValidate(String? value) {
+    if (value == null || value.isEmpty) return "Name is required";
+    return null;
+  }
+
+  String? emailValidate(String? value) {
+    if (value == null || value.isEmpty) return "Email is required";
+    if (!value.contains("@")) return "Enter valid email";
+    return null;
+  }
+
+  String? passwordValidate(String? value) {
+    if (value == null || value.isEmpty) return "Password is required";
+    if (value.length < 6) return "Password must greater than 6 character";
+    return null;
+  }
+
+  void isVisable() {
+    isvisable = !isvisable;
+    notifyListeners();
+  }
+
+  void submit() {
+    print(name.text);
+    print(email.text);
+    print(password.text);
+  }
+
+  @override
+  void dispose() {
+    name.dispose();
+    email.dispose();
+    password.dispose();
+    super.dispose();
   }
 }

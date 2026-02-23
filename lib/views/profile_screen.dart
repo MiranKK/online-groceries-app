@@ -18,11 +18,7 @@ class ProfileScreen extends StatelessWidget {
               ScaffoldMessenger.of(
                 context,
               ).showSnackBar(SnackBar(content: Text("Sign out successfully")));
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
-                (route) => false,
-              );
+             
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(userprovider.errormessage!)),

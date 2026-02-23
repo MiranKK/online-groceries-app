@@ -94,10 +94,15 @@ class HomeScreen extends StatelessWidget {
                   crossAxisSpacing: 10,
                 ),
                 itemBuilder: (context, index) {
-                  return CustomCard(
-                    image: exclusiveOfferList[index].image,
-                    title: exclusiveOfferList[index].title,
-                    price: "\$${exclusiveOfferList[index].price}",
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/detailsItem");
+                    },
+                    child: CustomCard(
+                      image: exclusiveOfferList[index].image,
+                      title: exclusiveOfferList[index].title,
+                      price: "\$${exclusiveOfferList[index].price}",
+                    ),
                   );
                 },
               ),

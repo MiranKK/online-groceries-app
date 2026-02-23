@@ -2,7 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_groceries_app_ui/layout/bottom_navigation_layout.dart';
+import 'package:online_groceries_app_ui/layout/wrapper_screen.dart';
+import 'package:online_groceries_app_ui/provider/product_detail_provider.dart';
 import 'package:online_groceries_app_ui/provider/user_provider.dart';
+import 'package:online_groceries_app_ui/views/details_item_screen.dart';
 import 'package:online_groceries_app_ui/views/forgot_password_screen.dart';
 import 'package:online_groceries_app_ui/views/home_screen.dart';
 import 'package:online_groceries_app_ui/views/login_screen.dart';
@@ -25,10 +28,16 @@ void main() async {
     ),
   );
   runApp(
+MultiProvider(providers: [
+  
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
-      child: const MyApp(),
+     
     ),
+    ChangeNotifierProvider(create: (context) => ProductDetailProvider(),)
+],
+child: const MyApp(), 
+)
   );
 }
 
@@ -49,13 +58,14 @@ class MyApp extends StatelessWidget {
           title: 'Online Groceries App',
           initialRoute: "/",
           routes: {
-            "/": (context) => SplashScreen(),
+            "/": (context) => WrapperScreen(),
             "/onboardingScreen": (context) => OnboardingScreen(),
             "/signup": (context) => SignupScreen(),
             "/login": (context) => LoginScreen(),
             "/home": (context) => HomeScreen(),
             "/bottomNavigation": (context) => BottomNavigationLayout(),
             "/forgotPassword": (context) => ForgotPasswordScreen(),
+            "/detailsItem": (context) => DetailsItemScreen(),
             
           },
         );

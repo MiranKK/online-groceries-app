@@ -5,18 +5,11 @@ import 'package:online_groceries_app_ui/style/custom_text_style.dart';
 import 'package:online_groceries_app_ui/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
+  final _formkey = GlobalKey<FormState>();
 
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController email = TextEditingController();
-
-  final TextEditingController password = TextEditingController();
-  bool isvisable = true;
   @override
   Widget build(BuildContext context) {
     final userprovider = Provider.of<UserProvider>(context);
@@ -46,89 +39,109 @@ class _LoginScreenState extends State<LoginScreen> {
 
               SizedBox(height: 35.h),
 
-              TextField(
-                controller: email,
-                style: CustomTextStyle().xxsmallBlackBoldText,
-                decoration: InputDecoration(
-                  hintText: "Enter email address",
-                  hintStyle: CustomTextStyle().xxsmallBlackText.copyWith(
-                    color: Colors.grey,
-                  ),
+              Form(
+                key: _formkey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextFormField(
+                      validator: (value) => userprovider.emailValidate(value),
+                      controller: userprovider.email,
+                      style: CustomTextStyle().xxsmallBlackBoldText,
+                      decoration: InputDecoration(
+                        errorStyle: CustomTextStyle().xxsmallBlackText.copyWith(
+                          color: Colors.red,
+                        ),
+                        hintText: "Enter email address",
+                        hintStyle: CustomTextStyle().xxsmallBlackText.copyWith(
+                          color: Colors.grey,
+                        ),
 
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff53B175)),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 20.h),
-              TextField(
-                controller: password,
-                obscureText: isvisable,
-                style: CustomTextStyle().xxsmallBlackBoldText,
-                decoration: InputDecoration(
-                  hintText: "Enter password",
-                  hintStyle: CustomTextStyle().xxsmallBlackText.copyWith(
-                    color: Colors.grey,
-                  ),
-
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff53B175)),
-                  ),
-
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isvisable = !isvisable;
-                      });
-                    },
-                    child: isvisable
-                        ? Icon(Icons.visibility_off, color: Colors.grey)
-                        : Icon(Icons.visibility, color: Colors.grey),
-                  ),
-                ),
-              ),
-              SizedBox(height: 15.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, "/forgotPassword");
-                    },
-                    child: Text(
-                      "Forgot Password?",
-                      style: CustomTextStyle().xxsmallBlackText,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 25.h),
-              Center(
-                child: userprovider.isloading
-                    ? CircularProgressIndicator()
-                    : CustomButton(
-                        onpressed: () async {
-                          await userprovider.loginUser(
-                            email.text.trim(),
-                            password.text.trim(),
-                          );
-
-                          if (userprovider.errormessage == null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Login successfully')),
-                            );
-                            Navigator.pushReplacementNamed(context, "/bottomNavigation");
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(userprovider.errormessage!),
-                              ),
-                            );
-                          }
-                        },
-                        text: "Log In",
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xff53B175)),
+                        ),
                       ),
+                    ),
+
+                    SizedBox(height: 20.h),
+                    TextFormField(
+                      validator: (value) =>
+                          userprovider.passwordValidate(value),
+                      controller: userprovider.password,
+                      obscureText: userprovider.isvisable,
+                      style: CustomTextStyle().xxsmallBlackBoldText,
+                      decoration: InputDecoration(
+                        errorStyle: CustomTextStyle().xxsmallBlackText.copyWith(
+                          color: Colors.red,
+                        ),
+                        hintText: "Enter password",
+                        hintStyle: CustomTextStyle().xxsmallBlackText.copyWith(
+                          color: Colors.grey,
+                        ),
+
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xff53B175)),
+                        ),
+
+                        suffixIcon: GestureDetector(
+                          onTap: userprovider.isVisable,
+                          child: userprovider.isvisable
+                              ? Icon(Icons.visibility_off, color: Colors.grey)
+                              : Icon(Icons.visibility, color: Colors.grey),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 15.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, "/forgotPassword");
+                          },
+                          child: Text(
+                            "Forgot Password?",
+                            style: CustomTextStyle().xxsmallBlackText,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 25.h),
+                    Center(
+                      child: userprovider.isloading
+                          ? CircularProgressIndicator()
+                          : CustomButton(
+                              onpressed: () async {
+                                if (!_formkey.currentState!.validate()) {
+                                  userprovider.submit();
+                                }
+                                await userprovider.loginUser(
+                                  userprovider.email.text.trim(),
+                                  userprovider.password.text.trim(),
+                                );
+
+                                if (userprovider.errormessage == null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Login successfully'),
+                                    ),
+                                  );
+                               Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
+                                  userprovider.email.clear();
+                                  userprovider.password.clear();
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(userprovider.errormessage!),
+                                    ),
+                                  );
+                                }
+                              },
+                              text: "Log In",
+                            ),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 20.h),
               Row(
