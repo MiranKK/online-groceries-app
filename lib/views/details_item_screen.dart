@@ -33,6 +33,8 @@ class _DetailsItemScreenState extends State<DetailsItemScreen> {
     context.read<ProductDetailProvider>().basePrice(widget.price);
   }
 
+  bool _isfav = false;
+
   @override
   Widget build(BuildContext context) {
     final detailsProvider = Provider.of<ProductDetailProvider>(context);
@@ -79,7 +81,37 @@ class _DetailsItemScreenState extends State<DetailsItemScreen> {
                         widget.name,
                         style: CustomTextStyle().smallBlackBoldText,
                       ),
-                      Icon(Icons.favorite_outline, size: 22.w),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _isfav = true;
+                          });
+                          detailsProvider.addFavItems(
+                            widget.name,
+                            widget.image,
+                            widget.price,
+                            context
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                "${widget.name} added to Favorite!",
+                                style: CustomTextStyle().xsmallWhiteBoldText,
+                              ),
+                              backgroundColor: const Color(0xff53B175),
+                              duration: const Duration(seconds: 2),
+                            ),
+                          );
+                        },
+                        child: _isfav
+                            ? 
+                             Icon(
+                                Icons.favorite,
+                                size: 22.w,
+                                color: Colors.red,
+                              ):Icon(Icons.favorite_outline, size: 22.w),
+                      ),
                     ],
                   ),
 

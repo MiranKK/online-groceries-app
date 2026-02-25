@@ -13,8 +13,9 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.pushNamed(context, "/"),
           icon: Icon(Icons.arrow_back, size: 18.w),
         ),
         title: Text("My Cart", style: CustomTextStyle().xxsmallBlackBoldText),
