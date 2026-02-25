@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_groceries_app_ui/data/card_items.dart';
 import 'package:online_groceries_app_ui/views/cart_screen.dart';
 import 'package:online_groceries_app_ui/views/explore_screen.dart';
 import 'package:online_groceries_app_ui/views/favorite_screen.dart';
@@ -16,7 +17,7 @@ class BottomNavigationLayout extends StatefulWidget {
 class _BottomNavigationLayoutState extends State<BottomNavigationLayout> {
   final List<Widget> screens = [
     const HomeScreen(),
-    const ExploreScreen(),
+     ExploreScreen(),
     const CartScreen(),
     const FavoriteScreen(),
     const ProfileScreen(),

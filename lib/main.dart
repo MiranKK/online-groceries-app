@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_groceries_app_ui/layout/bottom_navigation_layout.dart';
 import 'package:online_groceries_app_ui/layout/wrapper_screen.dart';
 import 'package:online_groceries_app_ui/provider/product_detail_provider.dart';
+import 'package:online_groceries_app_ui/provider/search_provider.dart';
 import 'package:online_groceries_app_ui/provider/user_provider.dart';
 import 'package:online_groceries_app_ui/views/forgot_password_screen.dart';
 import 'package:online_groceries_app_ui/views/home_screen.dart';
@@ -32,7 +33,8 @@ MultiProvider(providers: [
       create: (context) => UserProvider(),
      
     ),
-    ChangeNotifierProvider(create: (context) => ProductDetailProvider(),)
+    ChangeNotifierProvider(create: (context) => ProductDetailProvider(),),
+    ChangeNotifierProvider(create: (context) => SearchProvider(),),
 ],
 child: const MyApp(), 
 )
