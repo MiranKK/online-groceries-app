@@ -5,12 +5,12 @@ import 'package:online_groceries_app_ui/style/custom_text_style.dart';
 import 'package:online_groceries_app_ui/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
 
-class DetailsItemScreen extends StatelessWidget {
+class DetailsItemScreen extends StatefulWidget {
   final String name;
   final String image;
   final String productDetail;
   final String review;
-  final String price;
+  final double price;
 
   const DetailsItemScreen({
     super.key,
@@ -20,6 +20,18 @@ class DetailsItemScreen extends StatelessWidget {
     required this.review,
     required this.price,
   });
+
+  @override
+  State<DetailsItemScreen> createState() => _DetailsItemScreenState();
+}
+
+class _DetailsItemScreenState extends State<DetailsItemScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<ProductDetailProvider>().basePrice(widget.price);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +60,7 @@ class DetailsItemScreen extends StatelessWidget {
                       },
                       icon: Icon(Icons.arrow_back_ios, size: 20.w),
                     ),
-                    Center(child: Image.asset(image, width: 180.w)),
+                    Center(child: Image.asset(widget.image, width: 180.w)),
                   ],
                 ),
               ),
@@ -63,7 +75,10 @@ class DetailsItemScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(name, style: CustomTextStyle().smallBlackBoldText),
+                      Text(
+                        widget.name,
+                        style: CustomTextStyle().smallBlackBoldText,
+                      ),
                       Icon(Icons.favorite_outline, size: 22.w),
                     ],
                   ),
@@ -92,7 +107,14 @@ class DetailsItemScreen extends StatelessWidget {
                               style: CustomTextStyle().smallBlackBoldText,
                             ),
                             IconButton(
-                              onPressed: detailsProvider.incrementQuntity,
+                              onPressed: () {
+                                context
+                                    .read<ProductDetailProvider>()
+                                    .incrementQuntity();
+                                context.read<ProductDetailProvider>().basePrice(
+                                  widget.price,
+                                );
+                              },
                               icon: Icon(
                                 Icons.add,
                                 size: 22.w,
@@ -105,7 +127,7 @@ class DetailsItemScreen extends StatelessWidget {
 
                       Expanded(
                         child: Text(
-                          "\$$price",
+                          "\$${detailsProvider.totalprice.toStringAsFixed(2)}",
                           style: CustomTextStyle().xsmallBlackBoldText,
                         ),
                       ),
@@ -127,7 +149,7 @@ class DetailsItemScreen extends StatelessWidget {
                     ),
                     children: [
                       Text(
-                        productDetail,
+                        widget.productDetail,
                         style: CustomTextStyle().xxsmallBlackText.copyWith(
                           color: Colors.grey,
                         ),
@@ -150,7 +172,7 @@ class DetailsItemScreen extends StatelessWidget {
                     ),
                     children: [
                       Text(
-                        review,
+                        widget.review,
                         style: CustomTextStyle().xxsmallBlackText.copyWith(
                           color: Colors.grey,
                         ),
@@ -168,7 +190,27 @@ class DetailsItemScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(15.r),
         child: CustomButton(
-          onpressed: () {},
+          onpressed: () {
+            detailsProvider.addCartItems(
+              widget.name,
+              widget.image,
+              widget.price,
+              widget.productDetail,
+              widget.review,
+            );
+            context.read<ProductDetailProvider>().quntity;
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "${widget.name} added to basket!",
+                  style: CustomTextStyle().xsmallWhiteBoldText,
+                ),
+                backgroundColor: const Color(0xff53B175),
+                duration: const Duration(seconds: 2),
+              ),
+            );
+          },
           text: Text(
             "Add To Basket",
             style: CustomTextStyle().xsmallWhiteBoldText,
