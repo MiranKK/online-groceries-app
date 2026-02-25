@@ -12,7 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
      if(mounted){
        Navigator.pushNamed(context, "/onboardingScreen");
      }
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xff53b175),
+        color: const Color(0xff53b175),
         child: Center(
           child: Row(
             mainAxisAlignment: .center,

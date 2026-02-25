@@ -15,11 +15,11 @@ class BottomNavigationLayout extends StatefulWidget {
 
 class _BottomNavigationLayoutState extends State<BottomNavigationLayout> {
   final List<Widget> screens = [
-    HomeScreen(),
-    ExploreScreen(),
-    CartScreen(),
-    FavoriteScreen(),
-    ProfileScreen(),
+    const HomeScreen(),
+    const ExploreScreen(),
+    const CartScreen(),
+    const FavoriteScreen(),
+    const ProfileScreen(),
   ];
 
   int _currentScreen = 0;
@@ -30,7 +30,7 @@ class _BottomNavigationLayoutState extends State<BottomNavigationLayout> {
       body: screens[_currentScreen],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color(0xff53B175),
+        selectedItemColor: const Color(0xff53B175),
         unselectedItemColor: Colors.black,
         iconSize: 18.w,
         selectedFontSize: 11.sp,
@@ -42,23 +42,23 @@ class _BottomNavigationLayoutState extends State<BottomNavigationLayout> {
           });
         },
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: "Home",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.manage_search),
             label: "Explore",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart_outlined),
             label: "Cart",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.favorite_outline),
             label: "Favorite",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person_2_outlined),
             label: "Account",
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:online_groceries_app_ui/provider/user_provider.dart';
-import 'package:online_groceries_app_ui/views/login_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -15,17 +14,16 @@ class ProfileScreen extends StatelessWidget {
           onPressed: () async {
             await userprovider.signout();
             if (userprovider.errormessage == null) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text("Sign out successfully")));
-             
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Sign out successfully")),
+              );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(userprovider.errormessage!)),
               );
             }
           },
-          child: Text("Sign out"),
+          child: const Text("Sign out"),
         ),
       ),
     );

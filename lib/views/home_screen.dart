@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_groceries_app_ui/data/card_items.dart';
 import 'package:online_groceries_app_ui/style/custom_text_style.dart';
+import 'package:online_groceries_app_ui/views/details_item_screen.dart';
 import 'package:online_groceries_app_ui/widgets/custom_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -57,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12.r),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff53B175)),
+                          borderSide: const BorderSide(color: Color(0xff53B175)),
                           borderRadius: BorderRadius.circular(12.r),
                         ),
                       ),
@@ -76,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                         Text(
                           "See all",
                           style: CustomTextStyle().xxsmallBlackText.copyWith(
-                            color: Color(0xff53B175),
+                            color: const Color(0xff53B175),
                           ),
                         ),
                       ],
@@ -87,7 +88,7 @@ class HomeScreen extends StatelessWidget {
 
               SliverGrid.builder(
                 itemCount: exclusiveOfferList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   childAspectRatio: 0.75,
                   crossAxisCount: 2,
                   mainAxisSpacing: 10,
@@ -96,7 +97,21 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, "/detailsItem");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return DetailsItemScreen(
+                              image: "${exclusiveOfferList[index].image}",
+                              name: "${exclusiveOfferList[index].title}",
+                              price: exclusiveOfferList[index].price,
+                              review: exclusiveOfferList[index].review,
+                              productDetail:
+                                  exclusiveOfferList[index].productDetail,
+                            );
+                          },
+                        ),
+                      );
                     },
                     child: CustomCard(
                       image: exclusiveOfferList[index].image,

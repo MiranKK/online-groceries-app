@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                           color: Colors.grey,
                         ),
 
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xff53B175)),
                         ),
                       ),
@@ -79,15 +79,15 @@ class LoginScreen extends StatelessWidget {
                           color: Colors.grey,
                         ),
 
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xff53B175)),
                         ),
 
                         suffixIcon: GestureDetector(
                           onTap: userprovider.isVisable,
                           child: userprovider.isvisable
-                              ? Icon(Icons.visibility_off, color: Colors.grey)
-                              : Icon(Icons.visibility, color: Colors.grey),
+                              ? const Icon(Icons.visibility_off, color: Colors.grey)
+                              : const Icon(Icons.visibility, color: Colors.grey),
                         ),
                       ),
                     ),
@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 25.h),
                     Center(
                       child: userprovider.isloading
-                          ? CircularProgressIndicator()
+                          ? const CircularProgressIndicator()
                           : CustomButton(
                               onpressed: () async {
                                 if (!_formkey.currentState!.validate()) {
@@ -122,7 +122,7 @@ class LoginScreen extends StatelessWidget {
 
                                 if (userprovider.errormessage == null) {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
+                                    const SnackBar(
                                       content: Text('Login successfully'),
                                     ),
                                   );
@@ -159,7 +159,7 @@ class LoginScreen extends StatelessWidget {
                     child: Text(
                       "Signup",
                       style: CustomTextStyle().xxsmallBlackBoldText.copyWith(
-                        color: Color(0xff53B175),
+                        color: const Color(0xff53B175),
                       ),
                     ),
                   ),

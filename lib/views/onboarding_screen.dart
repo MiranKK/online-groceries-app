@@ -48,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 Navigator.pushReplacementNamed(context, "/login");
               },
               text: _isloading
-                  ? CircularProgressIndicator(color: Colors.white)
+                  ? const CircularProgressIndicator(color: Colors.white)
                   : "Get Started",
             ),
           ),

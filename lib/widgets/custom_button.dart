@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         minimumSize: Size(270.w, 50.h),
-        backgroundColor: Color(0xff53B175),
+        backgroundColor: const Color(0xff53B175),
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),

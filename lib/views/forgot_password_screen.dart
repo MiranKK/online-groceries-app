@@ -43,7 +43,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                     color: Colors.grey,
                   ),
 
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xff53B175)),
                   ),
                 ),
@@ -52,13 +52,13 @@ class ForgotPasswordScreen extends StatelessWidget {
               SizedBox(height: 20.h),
 
               Center(
-                child:userprovider.isloading?CircularProgressIndicator(): CustomButton(
+                child:userprovider.isloading?const CircularProgressIndicator(): CustomButton(
                   onpressed: () async {
                     await userprovider.resetPass(email.text);
                     if (userprovider.errormessage == null) {
                       ScaffoldMessenger.of(
                         context,
-                      ).showSnackBar(SnackBar(content: Text("Reset email sent")));
+                      ).showSnackBar(const SnackBar(content: Text("Reset email sent")));
                 
                       Navigator.pop(context);
                     } else {

@@ -5,19 +5,17 @@ import 'package:online_groceries_app_ui/layout/bottom_navigation_layout.dart';
 import 'package:online_groceries_app_ui/layout/wrapper_screen.dart';
 import 'package:online_groceries_app_ui/provider/product_detail_provider.dart';
 import 'package:online_groceries_app_ui/provider/user_provider.dart';
-import 'package:online_groceries_app_ui/views/details_item_screen.dart';
 import 'package:online_groceries_app_ui/views/forgot_password_screen.dart';
 import 'package:online_groceries_app_ui/views/home_screen.dart';
 import 'package:online_groceries_app_ui/views/login_screen.dart';
 import 'package:online_groceries_app_ui/views/onboarding_screen.dart';
 import 'package:online_groceries_app_ui/views/signup_screen.dart';
-import 'package:online_groceries_app_ui/views/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
+    options: const FirebaseOptions(
       apiKey: "AIzaSyBAQ6EGRttYVJvzYXFslQD0utCqurMK3BA",
       authDomain: "online-groceries-app-2b054.firebaseapp.com",
       projectId: "online-groceries-app-2b054",
@@ -48,7 +46,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       minTextAdapt: true,
-      designSize: Size(360, 690),
+      designSize: const Size(360, 690),
       builder: (context, child) {
         return MaterialApp(
           theme: ThemeData(
@@ -59,13 +57,13 @@ class MyApp extends StatelessWidget {
           initialRoute: "/",
           routes: {
             "/": (context) => WrapperScreen(),
-            "/onboardingScreen": (context) => OnboardingScreen(),
+            "/onboardingScreen": (context) => const OnboardingScreen(),
             "/signup": (context) => SignupScreen(),
             "/login": (context) => LoginScreen(),
-            "/home": (context) => HomeScreen(),
-            "/bottomNavigation": (context) => BottomNavigationLayout(),
+            "/home": (context) => const HomeScreen(),
+            "/bottomNavigation": (context) => const BottomNavigationLayout(),
             "/forgotPassword": (context) => ForgotPasswordScreen(),
-            "/detailsItem": (context) => DetailsItemScreen(),
+           
             
           },
         );

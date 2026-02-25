@@ -2,10 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_groceries_app_ui/provider/product_detail_provider.dart';
 import 'package:online_groceries_app_ui/style/custom_text_style.dart';
+import 'package:online_groceries_app_ui/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
 
 class DetailsItemScreen extends StatelessWidget {
-  const DetailsItemScreen({super.key});
+  final String name;
+  final String image;
+  final String productDetail;
+  final String review;
+  final String price;
+
+  const DetailsItemScreen({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.productDetail,
+    required this.review,
+    required this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +48,7 @@ class DetailsItemScreen extends StatelessWidget {
                       },
                       icon: Icon(Icons.arrow_back_ios, size: 20.w),
                     ),
-                    Center(
-                      child: Image.asset(
-                        "assets/images/item-1.png",
-                        width: 180.w,
-                      ),
-                    ),
+                    Center(child: Image.asset(image, width: 180.w)),
                   ],
                 ),
               ),
@@ -54,10 +63,7 @@ class DetailsItemScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Naturel Red Apple",
-                        style: CustomTextStyle().smallBlackBoldText,
-                      ),
+                      Text(name, style: CustomTextStyle().smallBlackBoldText),
                       Icon(Icons.favorite_outline, size: 22.w),
                     ],
                   ),
@@ -90,7 +96,7 @@ class DetailsItemScreen extends StatelessWidget {
                               icon: Icon(
                                 Icons.add,
                                 size: 22.w,
-                                color: Color(0xff53B175),
+                                color: const Color(0xff53B175),
                               ),
                             ),
                           ],
@@ -99,16 +105,74 @@ class DetailsItemScreen extends StatelessWidget {
 
                       Expanded(
                         child: Text(
-                          "\$0.0",
-                          style: CustomTextStyle().largeBlackBoldText,
+                          "\$$price",
+                          style: CustomTextStyle().xsmallBlackBoldText,
                         ),
                       ),
+                    ],
+                  ),
+                  SizedBox(height: 20.h),
+
+                  ExpansionTile(
+                    expansionAnimationStyle: const AnimationStyle(
+                      duration: Duration(milliseconds: 400),
+                    ),
+                    onExpansionChanged: detailsProvider.changeExpanded,
+                    trailing: detailsProvider.isexpand
+                        ? Icon(Icons.keyboard_arrow_down, size: 22.w)
+                        : const Icon(Icons.keyboard_arrow_right),
+                    title: Text(
+                      "Product Detail",
+                      style: CustomTextStyle().xsmallBlackBoldText,
+                    ),
+                    children: [
+                      Text(
+                        productDetail,
+                        style: CustomTextStyle().xxsmallBlackText.copyWith(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      SizedBox(height: 10.h),
+                    ],
+                  ),
+
+                  ExpansionTile(
+                    onExpansionChanged: detailsProvider.changeExpanded2,
+                    trailing: detailsProvider.isexpand2
+                        ? Icon(Icons.keyboard_arrow_down, size: 22.w)
+                        : const Icon(Icons.keyboard_arrow_right),
+                    expansionAnimationStyle: const AnimationStyle(
+                      duration: Duration(milliseconds: 400),
+                    ),
+                    title: Text(
+                      "Review",
+                      style: CustomTextStyle().xsmallBlackBoldText,
+                    ),
+                    children: [
+                      Text(
+                        review,
+                        style: CustomTextStyle().xxsmallBlackText.copyWith(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      SizedBox(height: 10.h),
                     ],
                   ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(15.r),
+        child: CustomButton(
+          onpressed: () {},
+          text: Text(
+            "Add To Basket",
+            style: CustomTextStyle().xsmallWhiteBoldText,
+          ),
         ),
       ),
     );
