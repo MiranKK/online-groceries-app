@@ -1,16 +1,21 @@
-# online_groceries_app_ui
+🛒Flutter Grocery App
 
-A new Flutter project.
+A simple and clean Flutter Grocery Application built as a mini project.
+The app allows users to browse grocery products, view product details, and add items to cart with a modern UI design.
 
-## Getting Started
+📱 Features:
+🏠 Home screen with product list
+🔍 Product details screen
+🛒 Add to cart functionality
+➕ Increase / Decrease quantity
+❤️ Clean and responsive UI
+📱 Works on Android (iOS compatible)
 
-This project is a starting point for a Flutter application.
+🛠️ Built With:
+Flutter
+Dart
+Provider (State Management)
+Flutter ScreenUtil (Responsive UI)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🎥 Demo
+![Image](https://github.com/user-attachments/assets/86453b82-c223-4310-9180-8b4268c72270)
