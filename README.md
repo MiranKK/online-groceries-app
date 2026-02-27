@@ -42,3 +42,29 @@ Practice state management using Provider
 Understand clean folder structure
 
 Prepare for real-world Flutter applications
+
+🚀 Getting Started
+1️⃣ Clone the repository
+git clone https://github.com/your-username/online-groceries-app.git
+2️⃣ Go to project folder
+cd online-groceries-app
+3️⃣ Install dependencies
+flutter pub get
+4️⃣ Run the app
+flutter run
+📂 Project Structure
+lib/
+│
+├── models/
+├── layout/
+├── provider/
+├── services/
+├── style/
+├── views/
+├── widgets/
+└── main.dart
+
+👨‍💻 Author
+
+Miran Kawa
+IT Graduate – Flutter Developer
