@@ -23,6 +23,8 @@ Flutter
 
 Dart
 
+Firebase (Authentication)
+
 Provider (State Management)
 
 Flutter ScreenUtil (Responsive UI)
